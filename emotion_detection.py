@@ -14,6 +14,15 @@ def emotion_detector(text_to_analyse):
 
     if response.status_code == 200:
         emotions = formatted_response['emotionPredictions'][0]['emotion']
+
+        # Find the value with the highest score
+        highest_score = max(emotions, key=emotions.get)
+        # Get the key with the highest score = the dominant emotion
+        highest_emotion = emotions[highest_score]
+
+        # Add the dominant emotion to the dict
+        emotions["dominant_emotion"] = highest_score 
+        
     elif response.status_code == 500:
         emotions = None
 

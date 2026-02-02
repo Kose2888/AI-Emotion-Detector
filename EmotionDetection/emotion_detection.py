@@ -23,6 +23,9 @@ def emotion_detector(text_to_analyse):
         # Add the dominant emotion to the dict
         emotions["dominant_emotion"] = highest_score 
         
+    elif response.status_code == 400:
+        emotions = None
+
     elif response.status_code == 500:
         emotions = None
 
